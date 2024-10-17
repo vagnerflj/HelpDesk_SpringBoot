@@ -2,20 +2,34 @@ package com.example.demo.domain;
 
 import com.example.demo.domain.enums.Prioridade;
 import com.example.demo.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+@Entity
+public class Chamado implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-public class Chamado {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento = LocalDate.now();
+
     private Prioridade prioridade;
     private Status status;
     private String titulo;
     private String observacao;
+
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Chamado() {
