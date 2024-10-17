@@ -4,7 +4,6 @@ import com.example.demo.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -23,9 +22,11 @@ public abstract class Pessoa implements Serializable {
 
     @Column(unique = true)
     protected String cpf;
+
     @Column(unique = true)
     protected String email;
     protected String senha;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "PERFIS")
     protected Set<Integer> perfis = new HashSet<>();
@@ -35,14 +36,17 @@ public abstract class Pessoa implements Serializable {
 
     public Pessoa() {
         super();
-        addPerfis(Perfil.CLIENTE);
+        addPerfil(Perfil.CLIENTE);
     }
-    public Pessoa(String nome, String cpf, String email, String senha) {
+
+    public Pessoa(Integer id, String nome, String cpf, String email, String senha) {
+        super();
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
-        addPerfis(Perfil.CLIENTE);
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Integer getId() {
@@ -86,11 +90,11 @@ public abstract class Pessoa implements Serializable {
     }
 
     public Set<Perfil> getPerfis() {
-        return perfis.stream().map(perfis -> Perfil.toEnum(perfis)).collect(Collectors.toSet());
+        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
     }
 
-    public void addPerfis(Perfil perfis) {
-        this.perfis.add( perfis.getCodigo());
+    public void addPerfil(Perfil perfil) {
+        this.perfis.add(perfil.getCodigo());
     }
 
     public LocalDate getDataCriacao() {
@@ -102,15 +106,34 @@ public abstract class Pessoa implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(cpf, pessoa.cpf) && Objects.equals(email, pessoa.email) && Objects.equals(senha, pessoa.senha) && Objects.equals(perfis, pessoa.perfis) && Objects.equals(dataCriacao, pessoa.dataCriacao);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, cpf, email, senha, perfis, dataCriacao);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Pessoa other = (Pessoa) obj;
+        if (cpf == null) {
+            if (other.cpf != null)
+                return false;
+        } else if (!cpf.equals(other.cpf))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
+
 }
