@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.domain.Tecnico;
+import com.example.demo.domain.dtos.TecnicoDTO;
 import com.example.demo.repositories.TecnicoRepository;
 import com.example.demo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class TecnicoService {
     }
     public List<Tecnico> findAll() {
         return repository.findAll();
+    }
+
+    public Tecnico create(TecnicoDTO objDTO) {
+        objDTO.setId(null);
+        Tecnico newObj =  new Tecnico(objDTO);
+        return repository.save(newObj);
     }
 }
