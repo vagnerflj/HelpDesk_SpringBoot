@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.services.DBService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ public class TestConfig {
     @Autowired
     private DBService dbService;
 
-    @Bean
+    @PostConstruct
     public void instanciaDB(){
         this.dbService.instanciaDB();
     }
