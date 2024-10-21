@@ -3,8 +3,6 @@ package com.example.demo.domain.dtos;
 import com.example.demo.domain.Tecnico;
 import com.example.demo.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
