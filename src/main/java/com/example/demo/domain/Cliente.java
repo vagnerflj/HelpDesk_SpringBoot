@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.dtos.ClienteDTO;
 import com.example.demo.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Cliente extends Pessoa {
@@ -26,7 +28,6 @@ public class Cliente extends Pessoa {
         super(id, nome, cpf, email, senha);
         addPerfil(Perfil.CLIENTE);
     }
-/*
     public Cliente(ClienteDTO obj) {
         super();
         this.id = obj.getId();
@@ -37,7 +38,6 @@ public class Cliente extends Pessoa {
         this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
     }
-*/
     public List<Chamado> getChamados() {
         return chamados;
     }
