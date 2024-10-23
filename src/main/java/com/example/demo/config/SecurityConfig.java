@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 import java.util.Arrays;
 
+import com.example.demo.security.JWTAuthenticationFilter;
 import com.example.demo.security.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
