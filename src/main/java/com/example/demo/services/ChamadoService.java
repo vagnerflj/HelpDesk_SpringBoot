@@ -8,10 +8,11 @@ import com.example.demo.domain.enums.Prioridade;
 import com.example.demo.domain.enums.Status;
 import com.example.demo.repositories.ChamadoRepository;
 import com.example.demo.services.exceptions.ObjectNotFoundException;
-import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

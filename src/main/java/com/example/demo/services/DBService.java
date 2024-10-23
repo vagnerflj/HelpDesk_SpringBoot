@@ -7,9 +7,7 @@ import com.example.demo.domain.enums.Perfil;
 import com.example.demo.domain.enums.Prioridade;
 import com.example.demo.domain.enums.Status;
 import com.example.demo.repositories.ChamadoRepository;
-import com.example.demo.repositories.ClienteRepository;
 import com.example.demo.repositories.PessoaRepository;
-import com.example.demo.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +25,7 @@ public class DBService {
 
     public void instanciaDB(){
 
-        Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "550.482.150-95", "valdir@mail.com", encoder.encode("123"));
+        Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "550.482.150-95", "valdir@gmail.com", encoder.encode("1234"));
         tec1.addPerfil(Perfil.ADMIN);
         Tecnico tec2 = new Tecnico(null, "Richard Stallman", "903.347.070-56", "stallman@mail.com", encoder.encode("123"));
         Tecnico tec3 = new Tecnico(null, "Claude Elwood Shannon", "271.068.470-54", "shannon@mail.com", encoder.encode("123"));

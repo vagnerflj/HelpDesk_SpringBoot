@@ -3,8 +3,9 @@ package com.example.demo.domain.dtos;
 
 import com.example.demo.domain.Chamado;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotNull;
 
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 

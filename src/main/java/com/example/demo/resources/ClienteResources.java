@@ -2,17 +2,13 @@ package com.example.demo.resources;
 
 
 import com.example.demo.domain.Cliente;
-import com.example.demo.domain.Tecnico;
 import com.example.demo.domain.dtos.ClienteDTO;
-import com.example.demo.domain.dtos.TecnicoDTO;
 import com.example.demo.services.ClienteService;
-import com.example.demo.services.TecnicoService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
