@@ -3,9 +3,8 @@ package com.example.demo.domain;
 import com.example.demo.domain.dtos.TecnicoDTO;
 import com.example.demo.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

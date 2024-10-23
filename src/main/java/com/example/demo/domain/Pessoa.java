@@ -2,9 +2,9 @@ package com.example.demo.domain;
 
 import com.example.demo.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
 import org.hibernate.validator.constraints.br.CPF;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
